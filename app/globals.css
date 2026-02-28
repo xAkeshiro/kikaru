@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --kikaru-bg: #0A0A0A;
+  --kikaru-surface: #141414;
+  --kikaru-border: #262626;
+  --kikaru-text: #FAFAFA;
+  --kikaru-text-secondary: #A1A1AA;
+  --kikaru-accent: #8B5CF6;
+  --kikaru-accent-hover: #7C3AED;
+  --kikaru-gradient-start: #8B5CF6;
+  --kikaru-gradient-end: #6D28D9;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--kikaru-bg);
+    color: var(--kikaru-text);
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--kikaru-accent);
+    color: white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--kikaru-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--kikaru-border);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--kikaru-text-secondary);
+  }
+}
+
+@layer components {
+  .kikaru-gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--kikaru-gradient-start),
+      var(--kikaru-gradient-end)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .kikaru-gradient-bg {
+    background: linear-gradient(
+      135deg,
+      var(--kikaru-gradient-start),
+      var(--kikaru-gradient-end)
+    );
+  }
+
+  .kikaru-glass {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--kikaru-border);
+  }
+
+  .kikaru-card {
+    background: var(--kikaru-surface);
+    border: 1px solid var(--kikaru-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .kikaru-card:hover {
+    border-color: var(--kikaru-accent);
+  }
+
+  .kikaru-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--kikaru-surface);
+    border: 1px solid var(--kikaru-border);
+    border-radius: 8px;
+    color: var(--kikaru-text);
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .kikaru-input:focus {
+    border-color: var(--kikaru-accent);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  }
+
+  .kikaru-input::placeholder {
+    color: var(--kikaru-text-secondary);
+  }
+
+  .kikaru-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(
+      135deg,
+      var(--kikaru-gradient-start),
+      var(--kikaru-gradient-end)
+    );
+    color: white;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .kikaru-btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .kikaru-btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .kikaru-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .kikaru-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--kikaru-text);
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: 1px solid var(--kikaru-border);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .kikaru-btn-secondary:hover {
+    border-color: var(--kikaru-accent);
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  /* Animated grid background */
+  .kikaru-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridFade 8s ease-in-out infinite;
+  }
+
+  /* Gradient orb */
+  .kikaru-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
