@@ -21,8 +21,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "JetBrains Mono", "monospace"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",
@@ -30,7 +30,7 @@ const config: Config = {
         "slide-in-left": "slideInLeft 0.6s ease-out forwards",
         "slide-in-right": "slideInRight 0.6s ease-out forwards",
         float: "float 6s ease-in-out infinite",
-        pulse-soft: "pulseSoft 4s ease-in-out infinite",
+        "pulse-soft": "pulseSoft 4s ease-in-out infinite",
         "grid-fade": "gridFade 8s ease-in-out infinite",
       },
       keyframes: {

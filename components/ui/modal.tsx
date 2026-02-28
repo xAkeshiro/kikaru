@@ -16,7 +16,7 @@ const contentVariants = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { type: "spring", duration: 0.4, bounce: 0.15 },
+    transition: { type: "spring" as const, duration: 0.4, bounce: 0.15 },
   },
   exit: {
     opacity: 0,

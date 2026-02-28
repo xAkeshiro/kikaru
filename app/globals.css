@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,7 +33,7 @@
   body {
     background-color: var(--kikaru-bg);
     color: var(--kikaru-text);
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   ::selection {
