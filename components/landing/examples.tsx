@@ -6,18 +6,12 @@ import { ExternalLink } from "lucide-react";
 
 interface MockLink {
   label: string;
-  color: string;
 }
 
 interface MockCreator {
   name: string;
   handle: string;
   theme: string;
-  bgClass: string;
-  accentClass: string;
-  textClass: string;
-  cardBgClass: string;
-  borderClass: string;
   links: MockLink[];
 }
 
@@ -26,48 +20,33 @@ const mockCreators: MockCreator[] = [
     name: "Luna Nightshade",
     handle: "@lunacreates",
     theme: "Midnight",
-    bgClass: "bg-[#0f0e1a]",
-    accentClass: "text-blue-400",
-    textClass: "text-slate-200",
-    cardBgClass: "bg-[#1a1830]",
-    borderClass: "border-blue-500/20",
     links: [
-      { label: "Portfolio", color: "bg-blue-600/80" },
-      { label: "Commission Info", color: "bg-blue-700/60" },
-      { label: "Art Store", color: "bg-indigo-600/60" },
-      { label: "Twitter", color: "bg-blue-500/40" },
+      { label: "Portfolio" },
+      { label: "Commission Info" },
+      { label: "Art Store" },
+      { label: "Twitter" },
     ],
   },
   {
     name: "Sakura Tanaka",
     handle: "@sakuradraws",
     theme: "Sakura",
-    bgClass: "bg-[#1a0f14]",
-    accentClass: "text-pink-400",
-    textClass: "text-pink-100",
-    cardBgClass: "bg-[#241520]",
-    borderClass: "border-pink-500/20",
     links: [
-      { label: "Gallery", color: "bg-pink-600/70" },
-      { label: "YouTube Channel", color: "bg-pink-700/50" },
-      { label: "Patreon", color: "bg-rose-600/50" },
-      { label: "Instagram", color: "bg-pink-500/40" },
+      { label: "Gallery" },
+      { label: "YouTube Channel" },
+      { label: "Patreon" },
+      { label: "Instagram" },
     ],
   },
   {
     name: "Neon Drift",
     handle: "@neondrift",
     theme: "Neon",
-    bgClass: "bg-[#0a0a0f]",
-    accentClass: "text-green-400",
-    textClass: "text-green-100",
-    cardBgClass: "bg-[#0f1a14]",
-    borderClass: "border-green-500/20",
     links: [
-      { label: "Beats & Music", color: "bg-green-600/60" },
-      { label: "Visual Art", color: "bg-emerald-600/50" },
-      { label: "Merch Store", color: "bg-teal-600/50" },
-      { label: "SoundCloud", color: "bg-green-500/40" },
+      { label: "Beats & Music" },
+      { label: "Visual Art" },
+      { label: "Merch Store" },
+      { label: "SoundCloud" },
     ],
   },
 ];
@@ -77,23 +56,23 @@ export default function Examples() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="examples" className="relative px-4 py-24 sm:py-32">
+    <section id="examples" className="kikaru-section-dark relative px-4 py-24 sm:py-36">
       <div className="mx-auto max-w-6xl" ref={ref}>
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
+          className="mb-20 text-center"
         >
-          <span className="mb-4 inline-block font-mono text-xs uppercase tracking-widest text-kikaru-accent">
+          <span className="kikaru-subheading mb-4 inline-block text-xs tracking-[0.3em] text-white/60">
             Examples
           </span>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-kikaru-text sm:text-4xl">
-            See what creators are building
+          <h2 className="kikaru-heading mb-4 text-3xl text-white sm:text-4xl lg:text-5xl">
+            SEE WHAT CREATORS ARE BUILDING
           </h2>
-          <p className="mx-auto max-w-lg text-kikaru-text-secondary">
-            Beautiful, unique pages that reflect each creator's style and personality.
+          <p className="mx-auto max-w-lg text-white/60">
+            Beautiful, unique pages that reflect each creator&apos;s style and personality.
           </p>
         </motion.div>
 
@@ -108,36 +87,34 @@ export default function Examples() {
               className="group"
             >
               {/* Browser frame */}
-              <div className="overflow-hidden rounded-xl border border-kikaru-border bg-kikaru-surface">
+              <div className="overflow-hidden border border-white/10 bg-black">
                 {/* Browser toolbar */}
-                <div className="flex items-center gap-2 border-b border-kikaru-border px-4 py-3">
+                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
                   <div className="flex gap-1.5">
-                    <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
-                    <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
+                    <div className="h-2 w-2 border border-white/20" />
+                    <div className="h-2 w-2 border border-white/20" />
+                    <div className="h-2 w-2 border border-white/20" />
                   </div>
-                  <div className="flex-1 rounded-md bg-kikaru-bg/50 px-3 py-1 text-center">
-                    <span className="font-mono text-[10px] text-kikaru-text-secondary">
+                  <div className="flex-1 border border-white/10 px-3 py-1 text-center">
+                    <span className="font-sans text-[10px] text-white/40">
                       kikaru.net/{creator.handle.replace("@", "")}
                     </span>
                   </div>
                 </div>
 
                 {/* Page content mock */}
-                <div className={`${creator.bgClass} p-6`}>
+                <div className="bg-black p-6">
                   {/* Avatar placeholder */}
                   <div className="mb-4 flex flex-col items-center">
-                    <div
-                      className={`mb-3 flex h-16 w-16 items-center justify-center rounded-full border-2 ${creator.borderClass} ${creator.cardBgClass}`}
-                    >
-                      <span className={`text-lg font-bold ${creator.accentClass}`}>
+                    <div className="mb-3 flex h-16 w-16 items-center justify-center border border-white/20">
+                      <span className="font-heading text-lg font-bold text-white">
                         {creator.name.charAt(0)}
                       </span>
                     </div>
-                    <h4 className={`text-sm font-semibold ${creator.textClass}`}>
+                    <h4 className="font-heading text-sm uppercase tracking-[0.1em] text-white">
                       {creator.name}
                     </h4>
-                    <p className={`text-xs opacity-60 ${creator.textClass}`}>
+                    <p className="text-xs text-white/40">
                       {creator.handle}
                     </p>
                   </div>
@@ -147,12 +124,12 @@ export default function Examples() {
                     {creator.links.map((link) => (
                       <div
                         key={link.label}
-                        className={`flex items-center justify-between rounded-lg border ${creator.borderClass} ${link.color} px-4 py-2.5`}
+                        className="flex items-center justify-between border border-white/15 px-4 py-2.5 transition-colors hover:border-white/30"
                       >
-                        <span className={`text-xs font-medium ${creator.textClass}`}>
+                        <span className="text-xs font-medium uppercase tracking-wider text-white/80">
                           {link.label}
                         </span>
-                        <ExternalLink size={12} className={`opacity-40 ${creator.textClass}`} />
+                        <ExternalLink size={12} className="text-white/30" />
                       </div>
                     ))}
                   </div>
@@ -161,7 +138,7 @@ export default function Examples() {
 
               {/* Theme label */}
               <div className="mt-3 text-center">
-                <span className="font-mono text-xs text-kikaru-text-secondary">
+                <span className="font-heading text-xs uppercase tracking-[0.2em] text-white/40">
                   {creator.theme} Theme
                 </span>
               </div>

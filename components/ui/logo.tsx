@@ -10,19 +10,20 @@ const sizeStyles = {
 export interface LogoProps {
   size?: keyof typeof sizeStyles;
   className?: string;
+  inverted?: boolean;
 }
 
-export function Logo({ size = "md", className }: LogoProps) {
+export function Logo({ size = "md", className, inverted = false }: LogoProps) {
   return (
     <span
       className={cn(
-        "font-mono font-bold tracking-tight select-none",
+        "font-heading font-bold uppercase tracking-[0.2em] select-none",
         sizeStyles[size],
         className
       )}
     >
-      <span className="text-[var(--kikaru-accent)]">k</span>
-      <span className="text-[var(--kikaru-text)]">ikaru</span>
+      <span className="kikaru-brand-k">K</span>
+      <span className={inverted ? "text-black" : "text-white"}>IKARU</span>
     </span>
   );
 }

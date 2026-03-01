@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Kikaru - A Smart Creative Platform for All Creators",
-    template: "%s | Kikaru",
+    default: "KIKARU - A Smart Creative Platform for All Creators",
+    template: "%s | KIKARU",
   },
   description:
     "Create beautiful, interactive portfolio pages and quick-link showcases. The smart creative platform built for artists and the creative community.",
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Kikaru",
-    title: "Kikaru - A Smart Creative Platform for All Creators",
+    siteName: "KIKARU",
+    title: "KIKARU - A Smart Creative Platform for All Creators",
     description:
       "Create beautiful, interactive portfolio pages and quick-link showcases.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kikaru - A Smart Creative Platform for All Creators",
+    title: "KIKARU - A Smart Creative Platform for All Creators",
     description:
       "Create beautiful, interactive portfolio pages and quick-link showcases.",
   },

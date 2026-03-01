@@ -2,27 +2,23 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { UserPlus, Sparkles, Share2 } from "lucide-react";
 
 const steps = [
   {
-    icon: UserPlus,
     number: "01",
-    title: "Sign Up",
+    title: "SIGN UP",
     description:
       "Create your free account in seconds. Pick a unique username and claim your kikaru.net page.",
   },
   {
-    icon: Sparkles,
     number: "02",
-    title: "Customize",
+    title: "CUSTOMIZE",
     description:
       "Choose a theme, add your links, upload your portfolio pieces, and make it truly yours.",
   },
   {
-    icon: Share2,
     number: "03",
-    title: "Share",
+    title: "SHARE",
     description:
       "Share your page everywhere. One link for your entire creative presence.",
   },
@@ -33,80 +29,64 @@ export default function HowItWorks() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative px-4 py-24 sm:py-32">
+    <section className="kikaru-section-light relative px-4 py-24 sm:py-36">
       <div className="mx-auto max-w-5xl" ref={ref}>
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
+          className="mb-20 text-center"
         >
-          <span className="mb-4 inline-block font-mono text-xs uppercase tracking-widest text-kikaru-accent">
+          <span className="kikaru-subheading mb-4 inline-block text-xs tracking-[0.3em] text-black/40">
             How It Works
           </span>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-kikaru-text sm:text-4xl">
-            Up and running in minutes
+          <h2 className="kikaru-heading mb-4 text-3xl text-black sm:text-4xl lg:text-5xl">
+            UP AND RUNNING IN MINUTES
           </h2>
-          <p className="mx-auto max-w-lg text-kikaru-text-secondary">
+          <p className="mx-auto max-w-lg text-black/60">
             Three simple steps to launch your creative presence online.
           </p>
         </motion.div>
 
         {/* Steps */}
-        <div className="relative grid gap-8 md:grid-cols-3 md:gap-12">
+        <div className="relative grid gap-16 md:grid-cols-3 md:gap-12">
           {/* Connecting line (desktop only) */}
-          <div className="absolute left-0 right-0 top-16 hidden h-px md:block">
-            <div className="mx-auto flex w-2/3 items-center justify-between">
+          <div className="absolute left-0 right-0 top-8 hidden h-px md:block">
+            <div className="mx-auto w-2/3">
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="h-px w-full origin-left bg-gradient-to-r from-kikaru-accent/60 to-kikaru-accent/20"
+                className="h-px w-full origin-left bg-black/20"
               />
             </div>
           </div>
 
-          {/* Connecting dots (mobile only) */}
-          <div className="absolute bottom-0 left-8 top-0 flex flex-col items-center md:hidden">
+          {steps.map((step, index) => (
             <motion.div
-              initial={{ scaleY: 0 }}
-              animate={isInView ? { scaleY: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-full w-px origin-top bg-gradient-to-b from-kikaru-accent/60 via-kikaru-accent/30 to-transparent"
-            />
-          </div>
+              key={step.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.2 }}
+              className="relative text-center"
+            >
+              {/* Step number */}
+              <div className="mb-6">
+                <span className="kikaru-heading text-4xl text-black/20">
+                  {step.number}
+                </span>
+              </div>
 
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.2 }}
-                className="relative flex gap-6 md:flex-col md:items-center md:text-center"
-              >
-                {/* Icon circle */}
-                <div className="relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border border-kikaru-border bg-kikaru-surface">
-                  <Icon size={24} className="text-kikaru-accent" />
-                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-kikaru-accent font-mono text-[10px] font-bold text-white">
-                    {step.number.replace("0", "")}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div>
-                  <h3 className="mb-2 text-lg font-semibold text-kikaru-text">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-kikaru-text-secondary">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+              {/* Content */}
+              <h3 className="kikaru-subheading mb-3 text-sm text-black">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-black/60">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

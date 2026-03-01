@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --kikaru-bg: #0A0A0A;
-  --kikaru-surface: #141414;
-  --kikaru-border: #262626;
-  --kikaru-text: #FAFAFA;
-  --kikaru-text-secondary: #A1A1AA;
-  --kikaru-accent: #8B5CF6;
-  --kikaru-accent-hover: #7C3AED;
-  --kikaru-gradient-start: #8B5CF6;
-  --kikaru-gradient-end: #6D28D9;
+  --kikaru-bg: #000000;
+  --kikaru-surface: rgba(255, 255, 255, 0.05);
+  --kikaru-border: #FFFFFF;
+  --kikaru-text: #FFFFFF;
+  --kikaru-text-secondary: rgba(255, 255, 255, 0.6);
+  --kikaru-accent: #0000FF;
+  --kikaru-accent-hover: #0000CC;
 }
 
 @layer base {
@@ -31,127 +32,185 @@
   }
 
   body {
-    background-color: var(--kikaru-bg);
-    color: var(--kikaru-text);
-    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
   }
 
   ::selection {
-    background-color: var(--kikaru-accent);
-    color: white;
+    background-color: #0000FF;
+    color: #FFFFFF;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--kikaru-bg);
+    background: #000000;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--kikaru-border);
-    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.2);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--kikaru-text-secondary);
+    background: rgba(255, 255, 255, 0.4);
   }
 }
 
 @layer components {
-  .kikaru-gradient-text {
-    background: linear-gradient(
-      135deg,
-      var(--kikaru-gradient-start),
-      var(--kikaru-gradient-end)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* --- SECTION BACKGROUNDS --- */
+  .kikaru-section-dark {
+    background-color: #000000;
+    color: #FFFFFF;
   }
 
-  .kikaru-gradient-bg {
-    background: linear-gradient(
-      135deg,
-      var(--kikaru-gradient-start),
-      var(--kikaru-gradient-end)
-    );
+  .kikaru-section-light {
+    background-color: #FFFFFF;
+    color: #000000;
   }
 
-  .kikaru-glass {
-    background: rgba(20, 20, 20, 0.8);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--kikaru-border);
+  /* --- HERO MARBLE TEXTURE --- */
+  .kikaru-hero-texture {
+    position: relative;
+    background-color: #000000;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 512px 512px;
   }
 
-  .kikaru-card {
-    background: var(--kikaru-surface);
-    border: 1px solid var(--kikaru-border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: border-color 0.2s ease;
+  .kikaru-hero-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
+    pointer-events: none;
   }
 
-  .kikaru-card:hover {
-    border-color: var(--kikaru-accent);
+  /* --- TYPOGRAPHY --- */
+  .kikaru-heading {
+    font-family: 'Oswald', 'Bebas Neue', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
   }
 
-  .kikaru-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background: var(--kikaru-surface);
-    border: 1px solid var(--kikaru-border);
-    border-radius: 8px;
-    color: var(--kikaru-text);
-    font-size: 0.875rem;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  .kikaru-subheading {
+    font-family: 'Oswald', 'Bebas Neue', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
-  .kikaru-input:focus {
-    border-color: var(--kikaru-accent);
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  .kikaru-decorative {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-weight: 400;
+    letter-spacing: 0.2em;
   }
 
-  .kikaru-input::placeholder {
-    color: var(--kikaru-text-secondary);
+  .kikaru-cjk {
+    font-family: 'Noto Sans JP', 'Noto Sans KR', sans-serif;
   }
 
+  /* --- BRAND LOGO --- */
+  .kikaru-brand {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .kikaru-brand-k {
+    display: inline-block;
+    background-color: #0000FF;
+    color: #FFFFFF;
+    padding: 0 0.15em;
+    line-height: 1;
+  }
+
+  /* --- BLUE ACCENT BAR --- */
+  .kikaru-accent-bar {
+    width: 10px;
+    background-color: #0000FF;
+    flex-shrink: 0;
+  }
+
+  /* --- BLUE CURSOR LINE --- */
+  .kikaru-cursor-line {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: #0000FF;
+    animation: cursorBlink 1.2s step-end infinite;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  @keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* --- BUTTONS (Outlined, sharp corners) --- */
   .kikaru-btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(
-      135deg,
-      var(--kikaru-gradient-start),
-      var(--kikaru-gradient-end)
-    );
-    color: white;
+    padding: 0.625rem 2rem;
+    background: transparent;
+    color: #FFFFFF;
+    font-family: 'Oswald', sans-serif;
     font-weight: 500;
-    font-size: 0.875rem;
-    border-radius: 8px;
-    border: none;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid #FFFFFF;
+    border-radius: 0;
     cursor: pointer;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   .kikaru-btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+    background-color: #FFFFFF;
+    color: #000000;
   }
 
   .kikaru-btn-primary:active {
-    transform: translateY(0);
+    opacity: 0.9;
   }
 
   .kikaru-btn-primary:disabled {
-    opacity: 0.5;
+    opacity: 0.3;
     cursor: not-allowed;
-    transform: none;
+  }
+
+  /* Button on light background */
+  .kikaru-btn-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 2rem;
+    background: transparent;
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid #000000;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .kikaru-btn-dark:hover {
+    background-color: #000000;
+    color: #FFFFFF;
   }
 
   .kikaru-btn-secondary {
@@ -159,39 +218,98 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.625rem 2rem;
     background: transparent;
-    color: var(--kikaru-text);
+    color: #FFFFFF;
+    font-family: 'Oswald', sans-serif;
     font-weight: 500;
-    font-size: 0.875rem;
-    border-radius: 8px;
-    border: 1px solid var(--kikaru-border);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
     cursor: pointer;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
   }
 
   .kikaru-btn-secondary:hover {
-    border-color: var(--kikaru-accent);
-    background: rgba(139, 92, 246, 0.05);
+    border-color: #FFFFFF;
+    color: #FFFFFF;
   }
 
-  /* Animated grid background */
+  /* --- CARDS (no borders, no shadows, defined by spacing) --- */
+  .kikaru-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 0;
+    padding: 2rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .kikaru-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* --- FORM INPUTS --- */
+  .kikaru-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .kikaru-input:focus {
+    border-color: #FFFFFF;
+  }
+
+  .kikaru-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* --- SCROLL INDICATOR --- */
+  .kikaru-scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .kikaru-scroll-indicator::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 24px;
+    background: currentColor;
+    opacity: 0.4;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.2; height: 16px; }
+    50% { opacity: 0.6; height: 24px; }
+  }
+
+  /* --- GLASS (updated for black/white palette) --- */
+  .kikaru-glass {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* --- GRID BACKGROUND (subtle) --- */
   .kikaru-grid-bg {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridFade 8s ease-in-out infinite;
-  }
-
-  /* Gradient orb */
-  .kikaru-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.15;
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
     pointer-events: none;
   }
 }

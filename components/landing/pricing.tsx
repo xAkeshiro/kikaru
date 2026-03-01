@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const tiers = [
   {
-    name: "Free",
+    name: "FREE",
     price: "$0",
     period: "forever",
     description: "Perfect for getting started with your creative page.",
@@ -19,12 +19,12 @@ const tiers = [
       "Basic customization",
       "Community access",
     ],
-    cta: "Get Started",
+    cta: "GET STARTED",
     href: "/signup",
     highlighted: false,
   },
   {
-    name: "Pro",
+    name: "PRO",
     monthlyPrice: "$5",
     yearlyPrice: "$48",
     description: "Everything you need for a professional creative presence.",
@@ -36,7 +36,7 @@ const tiers = [
       "Priority support",
       'Remove "Made with Kikaru" badge',
     ],
-    cta: "Go Pro",
+    cta: "GO PRO",
     href: "/signup?plan=pro",
     highlighted: true,
   },
@@ -48,22 +48,22 @@ export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <section id="pricing" className="relative px-4 py-24 sm:py-32">
+    <section id="pricing" className="kikaru-section-light relative px-4 py-24 sm:py-36">
       <div className="mx-auto max-w-5xl" ref={ref}>
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          className="mb-16 text-center"
         >
-          <span className="mb-4 inline-block font-mono text-xs uppercase tracking-widest text-kikaru-accent">
+          <span className="kikaru-subheading mb-4 inline-block text-xs tracking-[0.3em] text-black/40">
             Pricing
           </span>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-kikaru-text sm:text-4xl">
-            Simple, transparent pricing
+          <h2 className="kikaru-heading mb-4 text-3xl text-black sm:text-4xl lg:text-5xl">
+            SIMPLE, TRANSPARENT PRICING
           </h2>
-          <p className="mx-auto max-w-lg text-kikaru-text-secondary">
+          <p className="mx-auto max-w-lg text-black/60">
             Start free. Upgrade when you are ready to go pro.
           </p>
         </motion.div>
@@ -73,12 +73,12 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12 flex items-center justify-center gap-4"
+          className="mb-16 flex items-center justify-center gap-4"
         >
           <span
             className={cn(
-              "text-sm transition-colors",
-              !isYearly ? "text-kikaru-text" : "text-kikaru-text-secondary"
+              "font-heading text-xs uppercase tracking-[0.15em] transition-colors",
+              !isYearly ? "text-black" : "text-black/40"
             )}
           >
             Monthly
@@ -86,37 +86,37 @@ export default function Pricing() {
           <button
             onClick={() => setIsYearly(!isYearly)}
             className={cn(
-              "relative h-7 w-12 rounded-full border transition-colors",
+              "relative h-7 w-12 border transition-colors",
               isYearly
-                ? "border-kikaru-accent bg-kikaru-accent/20"
-                : "border-kikaru-border bg-kikaru-surface"
+                ? "border-black bg-black"
+                : "border-black/30 bg-white"
             )}
             aria-label="Toggle yearly billing"
           >
             <div
               className={cn(
-                "absolute top-0.5 h-5 w-5 rounded-full bg-white transition-transform",
-                isYearly ? "translate-x-6" : "translate-x-1"
+                "absolute top-0.5 h-5 w-5 transition-transform",
+                isYearly ? "translate-x-6 bg-white" : "translate-x-1 bg-black"
               )}
             />
           </button>
           <span
             className={cn(
-              "text-sm transition-colors",
-              isYearly ? "text-kikaru-text" : "text-kikaru-text-secondary"
+              "font-heading text-xs uppercase tracking-[0.15em] transition-colors",
+              isYearly ? "text-black" : "text-black/40"
             )}
           >
             Yearly
           </span>
           {isYearly && (
-            <span className="rounded-full bg-kikaru-accent/10 px-2.5 py-0.5 font-mono text-xs text-kikaru-accent">
+            <span className="border border-black px-2.5 py-0.5 font-heading text-[10px] uppercase tracking-[0.15em] text-black">
               Save 20%
             </span>
           )}
         </motion.div>
 
         {/* Pricing cards */}
-        <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-3xl gap-8 md:grid-cols-2">
           {tiers.map((tier, index) => (
             <motion.div
               key={tier.name}
@@ -124,36 +124,36 @@ export default function Pricing() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.15 }}
               className={cn(
-                "relative rounded-2xl border p-8",
+                "relative border p-10",
                 tier.highlighted
-                  ? "border-kikaru-accent/50 bg-kikaru-surface shadow-lg shadow-kikaru-accent/5"
-                  : "border-kikaru-border bg-kikaru-surface"
+                  ? "border-black"
+                  : "border-black/20"
               )}
             >
               {tier.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-kikaru-accent px-3 py-1 font-mono text-xs font-semibold text-white">
+                <div className="absolute -top-3 left-8">
+                  <span className="bg-[#0000FF] px-3 py-1 font-heading text-[10px] uppercase tracking-[0.2em] text-white">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="mb-6">
-                <h3 className="mb-1 text-lg font-semibold text-kikaru-text">
+              <div className="mb-8">
+                <h3 className="kikaru-heading mb-2 text-xl text-black">
                   {tier.name}
                 </h3>
-                <p className="mb-4 text-sm text-kikaru-text-secondary">
+                <p className="mb-6 text-sm text-black/60">
                   {tier.description}
                 </p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-kikaru-text">
+                  <span className="kikaru-heading text-5xl text-black">
                     {tier.highlighted
                       ? isYearly
                         ? tier.yearlyPrice
                         : tier.monthlyPrice
                       : tier.price}
                   </span>
-                  <span className="text-sm text-kikaru-text-secondary">
+                  <span className="text-sm text-black/40">
                     /{" "}
                     {tier.highlighted
                       ? isYearly
@@ -164,19 +164,15 @@ export default function Pricing() {
                 </div>
               </div>
 
-              <ul className="mb-8 space-y-3">
+              <ul className="mb-10 space-y-4">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <Check
-                      size={16}
-                      className={cn(
-                        "mt-0.5 flex-shrink-0",
-                        tier.highlighted
-                          ? "text-kikaru-accent"
-                          : "text-kikaru-text-secondary"
-                      )}
+                      size={14}
+                      className="mt-0.5 flex-shrink-0 text-black/40"
+                      strokeWidth={2}
                     />
-                    <span className="text-sm text-kikaru-text-secondary">
+                    <span className="text-sm text-black/60">
                       {feature}
                     </span>
                   </li>
@@ -186,10 +182,8 @@ export default function Pricing() {
               <Link
                 href={tier.href}
                 className={cn(
-                  "block w-full rounded-xl py-3 text-center text-sm font-semibold transition-all",
-                  tier.highlighted
-                    ? "kikaru-btn-primary"
-                    : "kikaru-btn-secondary"
+                  "kikaru-btn-dark block w-full py-3 text-center",
+                  tier.highlighted && "bg-black text-white hover:bg-black/80 hover:text-white"
                 )}
               >
                 {tier.cta}

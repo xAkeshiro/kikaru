@@ -10,25 +10,24 @@ const variantStyles = {
   ghost: [
     "inline-flex items-center justify-center gap-2",
     "bg-transparent border-none",
-    "text-[var(--kikaru-text-secondary)]",
-    "font-medium text-sm rounded-lg cursor-pointer",
+    "text-white/60",
+    "font-heading text-xs uppercase tracking-[0.15em] cursor-pointer",
     "transition-colors duration-200",
-    "hover:text-[var(--kikaru-text)] hover:bg-[var(--kikaru-surface)]",
+    "hover:text-white",
   ].join(" "),
   danger: [
     "inline-flex items-center justify-center gap-2",
-    "bg-red-600 text-white",
-    "font-medium text-sm rounded-lg border-none cursor-pointer",
+    "bg-transparent text-red-500",
+    "font-heading text-xs uppercase tracking-[0.15em] border border-red-500 cursor-pointer",
     "transition-all duration-200",
-    "hover:bg-red-700 hover:translate-y-[-1px]",
-    "active:translate-y-0",
+    "hover:bg-red-500 hover:text-white",
   ].join(" "),
 };
 
 const sizeStyles = {
-  sm: "px-3 py-1.5 text-xs",
-  md: "px-6 py-3 text-sm",
-  lg: "px-8 py-4 text-base",
+  sm: "px-4 py-1.5 text-xs",
+  md: "px-8 py-3 text-xs",
+  lg: "px-10 py-4 text-sm",
 };
 
 export interface ButtonProps

@@ -21,17 +21,16 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["Inter", "Helvetica Neue", "system-ui", "sans-serif"],
+        heading: ["Oswald", "Bebas Neue", "sans-serif"],
+        decorative: ["Cormorant Garamond", "Georgia", "serif"],
+        cjk: ["Noto Sans JP", "Noto Sans KR", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",
         "fade-in-up": "fadeInUp 0.6s ease-out forwards",
         "slide-in-left": "slideInLeft 0.6s ease-out forwards",
         "slide-in-right": "slideInRight 0.6s ease-out forwards",
-        float: "float 6s ease-in-out infinite",
-        "pulse-soft": "pulseSoft 4s ease-in-out infinite",
-        "grid-fade": "gridFade 8s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -49,18 +48,6 @@ const config: Config = {
         slideInRight: {
           "0%": { opacity: "0", transform: "translateX(20px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        pulseSoft: {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
-        },
-        gridFade: {
-          "0%, 100%": { opacity: "0.03" },
-          "50%": { opacity: "0.08" },
         },
       },
     },

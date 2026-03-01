@@ -1,70 +1,51 @@
 import Link from "next/link";
+import { Logo } from "@/components/ui/logo";
 
-const footerLinks = {
-  Product: [
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Examples", href: "#examples" },
-    { label: "Themes", href: "#" },
-  ],
-  Company: [
-    { label: "About", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Contact", href: "#" },
-  ],
-  Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
-  ],
-};
+const navLinks = [
+  { label: "PROJECT", href: "#" },
+  { label: "HOME", href: "/" },
+  { label: "FEATURES", href: "#features" },
+  { label: "PRICING", href: "#pricing" },
+  { label: "EXAMPLES", href: "#examples" },
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-kikaru-border px-4 py-16">
+    <footer className="kikaru-section-dark px-4 py-20">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
-          {/* Logo and tagline */}
-          <div className="lg:col-span-2">
-            <Link
-              href="/"
-              className="mb-4 inline-block font-mono text-xl font-bold lowercase tracking-tight text-kikaru-text"
-            >
-              kikaru
+        {/* Top section: Logo left, nav centered */}
+        <div className="flex flex-col items-center gap-12 md:flex-row md:items-start md:justify-between">
+          {/* Logo - bottom left */}
+          <div className="flex-shrink-0">
+            <Link href="/">
+              <Logo size="md" />
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed text-kikaru-text-secondary">
-              A smart creative platform for all creators. Build beautiful portfolio
-              pages and link showcases that truly represent your art.
-            </p>
           </div>
 
-          {/* Link columns */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="mb-4 font-mono text-xs uppercase tracking-widest text-kikaru-text-secondary">
-                {category}
-              </h4>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-kikaru-text-secondary transition-colors hover:text-kikaru-text"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Nav links with dash prefixes - centered */}
+          <nav className="flex flex-wrap items-center justify-center gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="font-heading text-xs uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white"
+              >
+                &ndash; {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Spacer for balance on desktop */}
+          <div className="hidden w-24 md:block" />
         </div>
 
-        {/* Copyright */}
-        <div className="mt-16 border-t border-kikaru-border pt-8">
-          <p className="text-center text-xs text-kikaru-text-secondary">
-            &copy; {new Date().getFullYear()} Kikaru. All rights reserved.
+        {/* Legal text and copyright - centered */}
+        <div className="mt-16 border-t border-white/10 pt-8 text-center">
+          <p className="mb-2 text-xs text-white/30">
+            {"\u682A\u5F0F\u4F1A\u793E"} Kikaru Inc. All rights reserved.
+          </p>
+          <p className="text-xs text-white/30">
+            &copy; {new Date().getFullYear()} KIKARU &mdash; A Smart Creative Platform for All Creators
           </p>
         </div>
       </div>
